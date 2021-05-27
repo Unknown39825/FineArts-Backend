@@ -13,6 +13,7 @@ import HomeCardUpdate from './Components/Authentication/adminPanel/Updates/Updat
 import WorkshopUpdate from './Components/Authentication/adminPanel/Updates/UpdateWorkshop.jsx'
 import AdminRoute from './Components/Authentication/auth/AdminRouters.js'
 import ProtectedRoute from './Components/Authentication/auth/ProtectedRoutes.js'
+import PhotoUpdate from './Components/Authentication/adminPanel/Updates/photoGalleryUpdate.jsx'
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <AdminRoute exact path="/event/:id" component={EventUpdate} />
         <AdminRoute exact path="/homecard/:id" component={HomeCardUpdate} />
         <AdminRoute exact path="/Workshop/:id" component={WorkshopUpdate} />
+        <Route exact path="/artwork/:id" component={PhotoUpdate} />
 
         <Route path="/" exact={true} component={Hompage} />
         <Route path="*" component={Error} />

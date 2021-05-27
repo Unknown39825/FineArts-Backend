@@ -51,8 +51,7 @@ const ContributorTable = () => {
             {
               data?.map((e) => {
                 return (<tr>
-                  {/* <td>{e._id}</td> */}
-
+                 
                   <td>{e?.user?.firstname}  </td>
                   <td>{e.count}</td>
 

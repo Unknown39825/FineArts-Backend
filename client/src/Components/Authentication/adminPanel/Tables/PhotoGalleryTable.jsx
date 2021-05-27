@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { isAuthenticated } from "../../auth";
 import '../../style.css'
 
-const HomeCardTable = () => {
+const PhotoGalleryTable = () => {
 
   const [Event, setEvent] = useState([]);
   const [created, setCreated] = useState(false);
@@ -19,7 +19,7 @@ const HomeCardTable = () => {
     //  console.log(event.target.value);
     
     try {
-      const res = await axios.delete(`/api/homecard/${id}`, config);
+      const res = await axios.delete(`/api/artwork/${id}`, config);
       if (res.data) {
         window.alert("Deleted Successfully");
         
@@ -37,7 +37,7 @@ const HomeCardTable = () => {
   useEffect(() => {
     const dataFetch = async () => {
       try {
-        const res = await axios.get(`/api/homecard`);
+        const res = await axios.get(`/api/artwork`);
 
         if (res.data) {
           setEvent(res.data);
@@ -57,18 +57,18 @@ const HomeCardTable = () => {
   }
 
   return (
-    <>
+      <>
       <div className="cont">
 
-        <h1>Home Card Table</h1>
+      <h1>PhotoGallery</h1>
         <table>
           <thead>
             <tr>
 
               {/* <th>id</th> */}
               <th>Image</th>
-              <th>Title</th>
-              <th>Link</th>
+              <th>artist</th>
+              <th>category</th>
               {isAuthenticated() && <th>update</th>}
               {isAuthenticated() && <th>delete</th>}
             </tr>
@@ -77,12 +77,12 @@ const HomeCardTable = () => {
             {Event.map((event) => {
               return (<tr>
                 {/* <td>{event._id}</td> */}
-                <td> <img src={event.imglink} height="30px" width="auto" alt="" /> </td>
+                <td> <img src={event.img} height="30px" width="auto" alt="" /> </td>
                 <td>{event.title}  </td>
-                <td><a className="btn" href={event.link} role="button">Link</a></td>
-
+                <td>{event.category}  </td>
+               
                 {isAuthenticated() &&
-                  <td><Link to={{ pathname: '/homecard/' + event._id }}><button className="btn">update</button></Link></td>}
+                  <td><Link to={{ pathname: '/artwork/' + event._id }}><button className="btn">update</button></Link></td>}
 
                 { isAuthenticated() && <td><button onClick={DeleteEvent} className="btn" value={event._id}> Delete </button> </td>
                 }
@@ -94,12 +94,12 @@ const HomeCardTable = () => {
           </tbody>
         </table>
 
-        {isAuthenticated() && <Link to={{ pathname: '/homecard/new' }}>            <button className="btn">add Homecard</button>          </Link>}
+        {isAuthenticated() && <Link to={{ pathname: '/artwork/new' }}>            <button className="btn">add Photos</button>          </Link>}
 
       </div>
 
-    </>
+      </>
   );
 }
 
-export default HomeCardTable;
+export default PhotoGalleryTable;

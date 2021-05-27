@@ -75,7 +75,7 @@ hr{
 
 @media  screen and  ( max-width:840px )
 {
-    .cont
+    .imgcont
     {
         grid-template-columns: 1fr 1fr 1fr !important;
     }
@@ -97,7 +97,7 @@ hr{
 
 @media  screen and  ( max-width:520px )
 {
-    .cont
+    .imgcont
     {
         grid-template-columns: 1fr 1fr  !important;
     }
@@ -109,7 +109,7 @@ hr{
 }
 @media  screen and  ( max-width:480px )
 {
-    .cont
+    .imgcont
     {
         grid-template-columns: 1fr !important;
     }

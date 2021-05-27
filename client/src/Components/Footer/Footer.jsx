@@ -1,9 +1,11 @@
-import React from 'react'
+import React  from 'react'
 import { Link } from 'react-router-dom'
 
 import './Footer.css'
+import Newsletter from './Newsletter';
 
 export default function Footer({ contributors}) {
+
     return (
         <>
 
@@ -26,16 +28,7 @@ export default function Footer({ contributors}) {
                     <div className="newletter">
                         <h2>news letter</h2>
                         <h4>stay updated to our pages</h4>
-                        <div className="form-element">
-                            <form target="_blank" method="POST"
-                                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdCkzdbP02QLicfLXnntdAMfBl9x8L5zpCwYQFD4mC-E2x_hA/formResponse">
-
-                                <input type="email" className="email" required name="entry.882243583" placeholder="Email" />
-
-                                <button><i className="fas fa-chevron-right" onClick=""></i></button>
-                            </form>
-
-                        </div>
+                        <Newsletter/>
                     </div>
 
                     <div className="instagram">

@@ -21,7 +21,6 @@ const UserTable = () => {
         if (res.data) {
           setData(res.data);
           
-
         }
       }
       catch (error) {

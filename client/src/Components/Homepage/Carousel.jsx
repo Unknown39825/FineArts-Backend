@@ -26,7 +26,7 @@ export default function Carousel({cards}) {
 
                 nav
                 dots
-                navText={['<i className="fas fa-long-arrow-alt-left"></i>', ' <i className="fas fa-long-arrow-alt-right"></i>'
+                navText={['<i class="fas fa-long-arrow-alt-left">', ' <i class="fas fa-long-arrow-alt-right"></i>'
                 ]}
                 
                 navClass={['owl-prev', 'owl-next']}

@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import Base from '../Base/Base'
 import './style.css';
 import img from '../../images/logo.png';
 import axios from 'axios';
+
 export default function JoinUs() {
 
     const [formData, setFormData] = useState({
@@ -80,7 +81,7 @@ export default function JoinUs() {
         }
 
     }
-    
+
     return (
         <Base>
 
@@ -121,14 +122,13 @@ export default function JoinUs() {
 
                             </select>
                             <br />
-                            <br /><br />
                             <label data-aos="zoom-in" data-aos-delay="100" name="email" for="Email" >Email </label><br />
                             <input type="text" className="email" data-aos="zoom-in" data-aos-delay="100" name="email" value={formData.email} onChange={update} /><br />
                             <label data-aos="zoom-in" data-aos-delay="100" for="phone">Phone no</label><br />
                             <input data-aos="zoom-in" data-aos-delay="100" type="text" name="phoneno" value={formData.phoneno} onChange={update} /><br />
                             <br />
                             <br />
-                            <br />
+                            
                             <label data-aos="zoom-in" data-aos-delay="100" for="intrest">Intrested in :</label>
 
                             <br />
@@ -155,12 +155,12 @@ export default function JoinUs() {
 
                             <label data-aos="zoom-in" data-aos-delay="100" for="about">About Yourself</label>
                             <br /><br />
-                            <textarea data-aos="zoom-in" data-aos-delay="100" name="about" value={formData.about} onChange={update} cols="40" rows="10"></textarea>
+                            <textarea data-aos="zoom-in" data-aos-delay="100" name="about" value={formData.about} onChange={update} rows="10"></textarea>
                             <br />
                             <br />
                             <label data-aos="zoom-in" data-aos-delay="100" for="join">Why you wanted to Join Us</label>
                             <br /><br />
-                            <textarea data-aos="zoom-in" data-aos-delay="100" name="why" value={formData.why} onChange={update} cols="40" rows="10"></textarea>
+                            <textarea data-aos="zoom-in" data-aos-delay="100" name="why" value={formData.why} onChange={update} rows="10"></textarea>
                             <br />
                             <br />
                             <button className="btn" data-aos="zoom-in" data-aos-delay="100" onClick={submit}>

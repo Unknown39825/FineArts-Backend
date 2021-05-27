@@ -5,10 +5,9 @@ import Base from '../../../Base/Base';
 import { isAuthenticated } from '../../auth';
 import '../../style.css'
 
-export default function HomeCardUpdate(props) {
+export default function PhotoUpdate(props) {
     let id = props.match.params.id;
-    console.log(id);
-
+    
     const { token } = isAuthenticated();
     const config = {
 
@@ -16,10 +15,9 @@ export default function HomeCardUpdate(props) {
     };
 
     const [EventPost, setEvent] = useState({
-        imglink: '',
-        title: '',
-        seemore: '',
-        desc:''
+        img: '',
+        artist: '',
+        category: ''
     });
 
     const [created, setCreated] = useState(false);
@@ -37,7 +35,7 @@ export default function HomeCardUpdate(props) {
             };
 
             try {
-                const res = await axios.get(`/api/homecard/${id}`, config);
+                const res = await axios.get(`/api/artwork/${id}`, config);
                 // console.log("hello");
                 
                 if (res.data) {
@@ -72,7 +70,7 @@ export default function HomeCardUpdate(props) {
         // await setUrl(file.secure_url);
         await setEvent({
             ...EventPost,
-            imglink: file.secure_url
+            img: file.secure_url
         })
     }
 
@@ -83,17 +81,20 @@ export default function HomeCardUpdate(props) {
         })
     }
 
+    console.log(EventPost);
+
     const postEvent = async () => {
 
         if (id !== "new") {
 
             try {
 
-                const res = await axios.put(`/api/homecard/${id}`, EventPost, config);
+                const res = await axios.put(`/api/artwork/${id}`, EventPost, config);
                 if(res.msg)
                 window.alert(res.msg);
+                console.log(res);
                 setCreated(true);
-                window.alert('Homecard Updated');
+                window.alert('Photo Updated');
             } catch (err) {
                 console.log(err);
             }
@@ -102,11 +103,14 @@ export default function HomeCardUpdate(props) {
             
             try {
                 
-                const res = await axios.post(`/api/homecard`, EventPost, config);
+                const res = await axios.post(`/api/artwork`, EventPost, config);
                 if(res.msg)
                 window.alert(res.msg);
                 setCreated(true);
-                window.alert('Homecard  created');
+                if(res.msg)
+                window.alert(res.msg);
+                
+                window.alert('photo created');
             } catch (err) {
                 console.log(err);
             }
@@ -116,44 +120,45 @@ export default function HomeCardUpdate(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if (EventPost.title.trim() !== "" && EventPost.imglink.trim() !== "" && EventPost.desc.trim() !== "") {
+        if (EventPost.img.trim() !== "" && EventPost.artist.trim() !== "" && EventPost.category.trim() !== "") {
             postEvent();
         } else {
-            window.alert("Homecard details are  empty");
+            window.alert("Event details are  empty");
         }
     }
 
     if (created) {
-        return <Redirect to="/admin"></Redirect>
+        return <Redirect to="/artwork/new"></Redirect>
     }
 
     return (
-        <Base>
+       <Base>
             <div className="cont">
                 <div>
-                    <h1 className="bg-dark m-2 text-white p-2 rounded">{id !== "new" ? ("update") : ("create")}  HomeCard</h1>
+                    <h1 className="bg-dark m-2 text-white p-2 rounded">{id !== "new" ? ("update") : ("create")}  Photo</h1>
 
                     <div className="form">
                         <form className="text-left m-2 p-5 text-white bg-dark rounded mt-5">
                             <div controlId="">
-                                <label><b>Title of Event</b></label>
-                                <input className="input" type="text" name="title" value={EventPost.title} onChange={handleChange} placeholder="" />
+                                <label><b>Artist</b></label>
+                                <input className="input" type="text" name="artist" value={EventPost.artist} onChange={handleChange} placeholder="" />
                             </div>
 
                             <div controlId="">
-                                <label><b>Seemore Link</b></label>
-                                <input className="input" type="text" name="seemore" value={EventPost.seemore} onChange={handleChange} placeholder="" />
-                            </div>
-
-                            <div controlId="">
-                                <label><b>Description</b></label>
-                                <input className="input" type="text" name="desc" value={EventPost.desc} onChange={handleChange} placeholder="" />
+                                <label><b>Category</b></label>
+                                <select name="category" value={EventPost.category} onChange={handleChange} >
+                                        <option >select</option>
+                                        <option value="wall">Wall painting</option>
+                                        <option value="Art">Art Gallery</option>
+                                        <option value="Back">BackDrop</option>
+                                </select>
+                                
                             </div>
 
                             <div controlId="">
                                 <label><b>Image Preview</b></label>
                                 <br />
-                                <img src={EventPost.imglink} height="100" width="auto" alt={EventPost.title} />
+                                <img src={EventPost.img} height="100" width="auto" alt={EventPost.title} />
                             </div>
 
                             <div className="test">
@@ -163,12 +168,12 @@ export default function HomeCardUpdate(props) {
 
                             </div>
 
-                            <button variant="primary" className="btn" onClick={onSubmit}>{id !== "new" ? ("update") : ("create")}HomeCard</button>
+                            <button variant="primary" className="btn" onClick={onSubmit}>{id !== "new" ? ("update") : ("create")}Photo</button>
 
                         </form>
                     </div>
                 </div>
             </div>
-        </Base>
+       </Base>
     )
 }

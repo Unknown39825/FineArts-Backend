@@ -1,17 +1,17 @@
+import Aos from 'aos';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Footer from '../Footer/Footer'
-import Loader from '../Loader/Loader';
+
 import Navbar from '../NavBar/Navbar'
 
 export default function Base({
-    title=-"title",
+    title="title",
     description="my description",
     className="",
     children
 }) {
 
-    const [loading, setLoading] = useState(true);
     const [conributor, setConributor] = useState([]);
 
     const FetchData = async () => {
@@ -32,20 +32,12 @@ export default function Base({
    
     useEffect(() => {
 
-        setTimeout(() => {
-            setLoading(false);
-            
-        }, 1000);
-
         FetchData();
-
+        
+        Aos.init();
+       
     }, []);
 
-    if (loading) {
-        return <Loader />
-
-    }
-    
     return (
         <>
         <Navbar key="navbar"/>

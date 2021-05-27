@@ -21,7 +21,7 @@ const WorkShopTable = () => {
     try {
       const res = await axios.delete(`/api/workshop/${id}`, config);
       if (res.data) {
-        window.alert("delted");
+        window.alert("Deleted Successfully");
         
         await setCreated(true);
 
@@ -94,7 +94,7 @@ const WorkShopTable = () => {
           </tbody>
         </table>
 
-        {isAuthenticated() && <Link to={{ pathname: '/workshop/new' }}>            <button className="btn">add Event</button>          </Link>}
+        {isAuthenticated() && <Link to={{ pathname: '/workshop/new' }}>            <button className="btn">add Workshop</button>          </Link>}
 
       </div>
 

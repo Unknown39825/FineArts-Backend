@@ -6,9 +6,9 @@
 }
 
 .art {
-  background: url("../../images/Abract01.png");
+  background: url("../../images/Abract02.png");
   background-repeat: no-repeat;
-  background-position: right;
+  
   height: auto;
   width: 100%;
   margin-top: -20px;
@@ -17,18 +17,28 @@
 }
 
  .art-post {
+
+  height: auto;
   padding: 1rem;
+  display: flex;
+  
 }
  .art-post .art-content {
   border-radius: 20px;
   overflow: hidden;
   display: flex;
+  flex:1;
   flex-direction: column;
   text-align: center;
   width: 80%;
-  height: auto;
   margin: 3rem 2rem;
   box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.726);
+}
+
+.art-content img{
+  
+  width: 100%;
+
 }
 
  .art-content .art-title {
@@ -57,10 +67,15 @@
 
 .owl-next, .owl-prev{
     padding: 20px;
-    border: 2px solid grey;
-    border-radius: 1px;
+    border: 2px solid skyblue;
+    border-radius: 10px;
+    color:black;
     
 }
+.owl-next i, .owl-prev i{
+
+}
+
 .owl-navigation {
   color: grey;
   background: transparent;

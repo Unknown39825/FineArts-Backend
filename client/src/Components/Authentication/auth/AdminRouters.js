@@ -12,7 +12,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/unautorized",
               state: { from: props.location },
             }}
           />

@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ImageMapper from "react-img-mapper";
 import image from "../../images/Background-image.jpg";
 import areas from './areas.json';
 
 const Mapper = (props) => {
+
+  function useWindowSize() {
+   
+    const [windowSize, setWindowSize] = useState(undefined);
+    useEffect(() => {
+      
+      function handleResize() {
+        
+        setWindowSize(window.innerWidth);
+      }
+      
+      window.addEventListener("resize", handleResize);
+      
+      handleResize();
+      
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+    return windowSize;
+  }
   
   const MAP = {
     name: "my-map",
@@ -16,7 +35,7 @@ const Mapper = (props) => {
       src={image}
       map={MAP}
         responsive={true}
-        parentWidth={window.innerWidth}
+        parentWidth={useWindowSize()}
     />
   );
 };

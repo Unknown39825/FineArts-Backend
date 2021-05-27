@@ -21,7 +21,7 @@ const EventTables = () => {
     try {
       const res = await axios.delete(`/api/event/${id}`, config);
       if (res.data) {
-        window.alert("delted");
+        window.alert("Deleted Successfully");
         
         await setCreated(true);
 

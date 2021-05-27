@@ -93,7 +93,8 @@ export default function UpdateWorkshop(props) {
             try {
 
                 const res = await axios.put(`/api/workshop/${id}`, EventPost, config);
-                window.alert(res?.msg);
+                if(res.msg)
+                window.alert(res.msg);
                 setCreated(true);
                 window.alert('Workshop Updated');
             } catch (err) {
@@ -105,7 +106,8 @@ export default function UpdateWorkshop(props) {
             try {
                 
                 const res = await axios.post(`/api/workshop`, EventPost, config);
-                window.alert(res?.msg);
+                if(res.msg)
+                window.alert(res.msg);
                 setCreated(true);
                 window.alert('Workshop  created');
             } catch (err) {

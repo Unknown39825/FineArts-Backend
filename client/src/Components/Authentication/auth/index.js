@@ -20,9 +20,8 @@ export const signout = async () => {
     try {
         const res = await axios.get(`/user/logout`, config);
         localStorage.removeItem("jwt");
-        window.alert(res?.msg);
-        
-        window.alert("logout success");
+        if(res)
+        window.alert(`${res.firstname} logout success`);
         window.location="/";
 
     } catch (error) {

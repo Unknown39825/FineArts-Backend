@@ -5,6 +5,7 @@ import Base from '../../Base/Base';
 import WorkShopTable from './Tables/WorkshopTable';
 import UserTable from './Tables/UserTable';
 import ContributorTable from './Tables/ContributorsTable';
+import PhotoGalleryTable from './Tables/PhotoGalleryTable';
 
 const admin = () => {
     return (
@@ -13,6 +14,7 @@ const admin = () => {
             <EventTable/>
             <HomeCardTable/>
             <WorkShopTable/>
+            <PhotoGalleryTable/>
             <ContributorTable/>
             <UserTable/>
             

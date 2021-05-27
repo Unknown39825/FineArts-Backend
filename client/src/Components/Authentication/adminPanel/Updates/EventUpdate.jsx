@@ -88,7 +88,9 @@ export default function EventUpdate(props) {
             try {
 
                 const res = await axios.put(`/api/event/${id}`, EventPost, config);
-                window.alert(res?.msg);
+                if(res.msg)
+                window.alert(res.msg);
+                console.log(res);
                 setCreated(true);
                 window.alert('Event Updated');
             } catch (err) {
@@ -100,9 +102,11 @@ export default function EventUpdate(props) {
             try {
                 
                 const res = await axios.post(`/api/event`, EventPost, config);
-                window.alert(res?.msg);
+                if(res.msg)
+                window.alert(res.msg);
                 setCreated(true);
-                window.alert(res?.msg);
+                if(res.msg)
+                window.alert(res.msg);
                 
                 window.alert('event  created');
             } catch (err) {
