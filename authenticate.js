@@ -43,7 +43,9 @@ exports.verifyAdmin = (req, res, next) => {
   User.findOne({ _id: req.user._id })
     .then(
       (user) => {
+        
         if (user.admin) {
+
           next(); //move ahead only if user is admin
         } else {
           res.status(403).json({ msg: "Admin access required !!" });

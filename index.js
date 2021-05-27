@@ -8,6 +8,10 @@ const passport = require('passport');
 
 // my routes
 const userRoutes = require("./routes/Users/user");
+const homecardRoutes = require("./routes/HomePage/homecard");
+const eventRoutes = require("./routes/HomePage/event");
+const WorkshopRoutes = require("./routes/HomePage/workshop");
+const contributorRoutes = require("./routes/HomePage/contributor");
 
 //DB Connection
 mongoose
@@ -34,6 +38,11 @@ app.use(passport.initialize());
 
 //My Routes
 app.use("/user", userRoutes);
+app.use("/api", contributorRoutes);
+app.use("/api", homecardRoutes);
+app.use("/api", eventRoutes);
+app.use("/api", WorkshopRoutes);
+
 app.use("/",(req,res)=>{
   res.send("Welcome to FineArts");
 })
