@@ -9,9 +9,6 @@ const {
 } = require("../../controllers/HomePage/workshop");
 const router = express.Router();
 
-
-
-
 router.post("/workshop",verifyUser ,createWorkshop);
 router.get("/workshop", getWorkshop);
 router.put("/workshop/:workshopId", verifyUser,verifyAdmin,updateWorkshop);
