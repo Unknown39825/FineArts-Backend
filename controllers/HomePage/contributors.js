@@ -16,7 +16,6 @@ exports.createContributor =async (userId,cnt)=>{
                 }
             });
             await contributor.save();
-            console.log("contributor updated");
             
         }
         else
@@ -27,7 +26,6 @@ exports.createContributor =async (userId,cnt)=>{
                 cnt:cnt
             });
             await contributor.save();
-            console.log("new contributor added");
             
         }
         

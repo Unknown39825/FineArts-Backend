@@ -57,6 +57,8 @@ exports.updateWorkshop = async (req, res) => {
   
   catch (err) {
     res.status(400).json({error:"Not updated",desc: err});
+
+    return;
   }
 
   res.status(202).json({

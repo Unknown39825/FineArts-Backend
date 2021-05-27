@@ -14,7 +14,7 @@ const workshopSchema=mongoose.Schema({
         required: true
     },
     date: {
-        type: Date,
+        type: Number,
         default: Date
     },
     time: {

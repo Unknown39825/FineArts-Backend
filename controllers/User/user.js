@@ -144,8 +144,7 @@ exports.verifyOtp = async (req, res) => {
 
 // forgot password
 exports.forgotPassword = async (req, res) => {
-  console.log("forgot called");
-  console.log(req.body);
+  
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
@@ -202,8 +201,7 @@ exports.loginUser = async (req, res) => {
 };
 
 exports.logoutUser = async (req, res) => {
-  console.log(req.token);
-
+  
   try {
     req.user.tokens = req.user.tokens.filter((token) => {
       return jwt.verify(token.token, process.env.secretKey, (err, data) => {
