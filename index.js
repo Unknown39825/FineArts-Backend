@@ -47,9 +47,9 @@ app.use("/api", WorkshopRoutes);
 app.use("/api", artworkRoutes);
 app.use("/api", formRoutes);
 
-app.use("/",(req,res)=>{
-  res.send("Welcome to FineArts");
-})
+// app.use("/",(req,res)=>{
+//   res.send("Welcome to FineArts");
+// })
 
 const port = process.env.PORT || 8000;
 
