@@ -4,7 +4,7 @@ const { createartwork, updateartwork, getartworkbyId, deleteartwork, getartwork 
 
 const router = express.Router();
 
-router.post("/artwork", verifyUser, verifyAdmin, createartwork);
+router.post("/artwork", verifyUser, createartwork);
 router.get("/artwork", getartwork);
 router.put("/artwork/:artworkId", verifyUser, verifyAdmin, updateartwork);
 router.get("/artwork/:artworkId", verifyUser, verifyAdmin, getartworkbyId);

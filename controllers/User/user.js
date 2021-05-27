@@ -43,7 +43,7 @@ exports.registerUser = async (req, res) => {
       }
 
       const msg = {
-        from: "chetan335001@gmail.com",
+        from: "freeosenior@gmail.com",
         to: user.email,
         subject: "FineArts Registration - Verify your Email",
         text: `Hi there, Thanks for registering on FineArts !!,
@@ -157,7 +157,7 @@ exports.forgotPassword = async (req, res) => {
     user.emailToken = otp; //adding the otp
 
     const msg = {
-      from: "chetan335001@gmail.com",
+      from: "freeosenior@gmail.com",
       to: user.email,
       subject: "FineArts Password Reset",
       text: `Hi there, Forgot Your Password!!,
