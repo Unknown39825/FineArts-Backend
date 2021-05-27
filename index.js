@@ -12,6 +12,8 @@ const homecardRoutes = require("./routes/HomePage/homecard");
 const eventRoutes = require("./routes/HomePage/event");
 const WorkshopRoutes = require("./routes/HomePage/workshop");
 const contributorRoutes = require("./routes/HomePage/contributor");
+const artworkRoutes = require("./routes/ArtGallery/artwork");
+const formRoutes = require("./routes/Form/form");
 
 //DB Connection
 mongoose
@@ -42,6 +44,8 @@ app.use("/api", contributorRoutes);
 app.use("/api", homecardRoutes);
 app.use("/api", eventRoutes);
 app.use("/api", WorkshopRoutes);
+app.use("/api", artworkRoutes);
+app.use("/api", formRoutes);
 
 app.use("/",(req,res)=>{
   res.send("Welcome to FineArts");
