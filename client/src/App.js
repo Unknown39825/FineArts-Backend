@@ -30,7 +30,7 @@ export default function App() {
         <AdminRoute exact path="/event/:id" component={EventUpdate} />
         <AdminRoute exact path="/homecard/:id" component={HomeCardUpdate} />
         <AdminRoute exact path="/Workshop/:id" component={WorkshopUpdate} />
-        <Route exact path="/artwork/:id" component={PhotoUpdate} />
+        <AdminRoute exact path="/artwork/:id" component={PhotoUpdate} />
 
         <Route path="/" exact={true} component={Hompage} />
         <Route path="*" component={Error} />

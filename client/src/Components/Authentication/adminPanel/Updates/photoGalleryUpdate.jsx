@@ -128,7 +128,7 @@ export default function PhotoUpdate(props) {
     }
 
     if (created) {
-        return <Redirect to="/artwork/new"></Redirect>
+        return <Redirect to="/admin"></Redirect>
     }
 
     return (
