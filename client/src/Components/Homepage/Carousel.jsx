@@ -29,11 +29,11 @@ export default function Carousel({cards}) {
                 navText={['<i className="fas fa-long-arrow-alt-left"></i>', ' <i className="fas fa-long-arrow-alt-right"></i>'
                 ]}
                 
-                navClassName={['owl-prev', 'owl-next']}
+                navClass={['owl-prev', 'owl-next']}
 
                 responsive={responsive}
                 
-                navContainerclassName='owl-navigation'
+                navContainerClass='owl-navigation'
                 navElement='btn'
 
             >
