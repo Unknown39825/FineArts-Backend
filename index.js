@@ -7,6 +7,7 @@ const cors = require("cors");
 const passport = require('passport');
 
 // my routes
+const userRoutes = require("./routes/Users/user");
 
 //DB Connection
 mongoose
@@ -32,9 +33,9 @@ mongoose.Promise = global.Promise;
 app.use(passport.initialize());
 
 //My Routes
-
+app.use("/user", userRoutes);
 app.use("/",(req,res)=>{
-  res.send("Welcome to FreeOSenior");
+  res.send("Welcome to FineArts");
 })
 
 const port = process.env.PORT || 8000;
