@@ -59,7 +59,7 @@ export default function ArtGallery() {
             <main>
                 {/* <a name=" wall "></a> */}
                 <h1 className="title">Wall Paintings</h1>
-                <div className="cont" >
+                <div className="imgcont" >
 
                     {wall.map((data)=><PhotoCard key={data._id} data={data}/>)}
 
@@ -67,14 +67,14 @@ export default function ArtGallery() {
                 {/* <a name="back"></a> */}
 
                 <h1 className="title">backdrop</h1>
-                <div className="cont"  >
+                <div className="imgcont"  >
                     {back.map((data) => <PhotoCard key={data._id}  data={data} />)}
                     
                 </div>
                 {/* <a name="gal"></a> */}
                 <h1 className="title">Art Gallery</h1>
 
-                <div className="cont" >
+                <div className="imgcont" >
                     {artg.map((data) => <PhotoCard key={data._id}  data={data} />)}
                    
                 </div>
