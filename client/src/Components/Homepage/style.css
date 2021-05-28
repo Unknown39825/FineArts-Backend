@@ -8,10 +8,8 @@
 .art {
   background: url("../../images/Abract02.png");
   background-repeat: no-repeat;
-  
-  height: auto;
   width: 100%;
-  margin-top: -20px;
+  margin:20px auto;
   background-blend-mode: var(--white);
   background-size: cover;
 }
@@ -71,9 +69,6 @@
     border-radius: 10px;
     color:black;
     
-}
-.owl-next i, .owl-prev i{
-
 }
 
 .owl-navigation {
@@ -207,10 +202,13 @@
     grid-template-columns: 100%;
   } */
 
-   .site-title h1,
-  h3 {
+   .who h1 ,h1.what{
     margin: 1.4rem;
-    font-size: 2.5rem;
+    font-size: 3rem;
+  }
+    h2 {
+    margin: 1.4rem;
+    font-size: 1.5rem;
   }
   .pop {
     width: 80%;
@@ -225,18 +223,12 @@
 }
 
 @media screen and (max-width: 520px) {
-   .art {
-    height: 125vh;
-  }
+ 
   .site-content .post-content > .post-image .post-info {
     display: none;
   }
   /* footer.footer .container > div {
     padding: 1rem 0.9rem !important;
   } */
-   .site-title h1,
-  h3 {
-    margin: 1.4rem;
-    font-size: 1rem;
-  }
+ 
 }

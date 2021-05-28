@@ -1,14 +1,14 @@
 import React from 'react';
-
 import Carousel from './Carousel';
+import './style.css'
 
 const WhatWeDo = ({cards}) => {
     return (
         <div className="art">
 
             <div className="container">
-                <center>
-                    <h1 className="what">What We do</h1>
+                <center className="who">
+                    <h1>What We do</h1>
                 </center>
                 <Carousel cards={cards} /> 
                 

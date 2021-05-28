@@ -4,9 +4,14 @@
   
 }
 
+.amazing h1
+{
+  font-size: 5vw;
+}
+
 .cover .site-title
 {
-    height:55vw;
+    height:60vw;
     
     margin-bottom: 100px;
     padding:0;
@@ -44,7 +49,7 @@ h3 {
 
 .wave {
   position: relative;
-  bottom: 20vw;
+  bottom: 18vw;
   left: 0;
   z-index: 5;
   width: 100%;
