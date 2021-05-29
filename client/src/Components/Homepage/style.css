@@ -122,6 +122,12 @@
   color: grey;
 }
 
+.post-title p
+{
+
+  font-family: var(--Livvic);
+}
+
  .post-content .post-title .post-btn {
   border-radius: 0;
   background-color: skyblue;

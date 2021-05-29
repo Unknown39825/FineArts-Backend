@@ -39,16 +39,14 @@ export default function Base({
     }, []);
 
     return (
-        <>
+        <div >
         <Navbar key="navbar"/>
 
-        <div className={className}>
+            <div className="children" >
+                {children}
+            </div>
             
-            {children}
-            
-        </div>
-
         <Footer key="footer" contributors ={conributor} />
-        </>
+        </div>
     )
 }

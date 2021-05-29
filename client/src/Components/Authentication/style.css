@@ -6,13 +6,13 @@ body {
 .cont {
   width: 50%;
   overflow: hidden;
-  margin: 10vh auto;
+  margin: 10vw auto;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   justify-content: center;
   align-items: center;
-  padding: 3vw;
+  padding: 2vw;
   box-shadow: 20px 20px 5px skyblue;
   border-radius: 10px;
   border: 4px solid skyblue;
@@ -105,8 +105,9 @@ select {
   }
   .cont {
     grid-template-columns: 1fr !important;
-    width: 90%;
-    padding: 20px 10px;
+    width: 85%;
+    margin: 30vw auto;
+    box-shadow: 10px 10px 5px skyblue;
   }
   .box {
     height: 25vw !important;

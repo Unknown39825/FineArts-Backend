@@ -10,7 +10,7 @@ export default function index() {
                 <section className="site-title" >
                     <div className="site-background"  >
                         <div className="amazing">
-                            <h1 data-aos="fade-down" data-aos-delay="3000">A Group of Amazing Peoples</h1>
+                            <h1 data-aos="fade-down" data-aos-delay="500">A Group of Amazing Peoples</h1>
                         </div>
                         <div className="map">
                             <Mapper height={window.innerWidth} />
