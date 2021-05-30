@@ -6,6 +6,7 @@ import PhotoCard from './PhotoCard'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 import Loader from '../Loader/Loader'
+import { Link } from 'react-router-dom'
 export default function ArtGallery() {
 
     const [wall, setWall] = useState([]);
@@ -78,6 +79,13 @@ export default function ArtGallery() {
                     {artg.map((data) => <PhotoCard key={data._id}  data={data} />)}
                    
                 </div>
+
+                <div className="container" style={{margin:'30px auto'}}>
+                    
+                    <Link to="/artwork/new"><button className="btn">Post your Artwork</button></Link>
+                    
+                </div>
+
             </main>
 
         </Base>

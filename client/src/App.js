@@ -23,9 +23,8 @@ export default function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/forgot" component={Forgot} />
-
         <ProtectedRoute exact path="/join" component={JoinUs} />
-
+        <ProtectedRoute exact path="/artwork/:id" component={PhotoUpdate} />
         <AdminRoute exact path="/admin" component={admin} />
         <AdminRoute exact path="/event/:id" component={EventUpdate} />
         <AdminRoute exact path="/homecard/:id" component={HomeCardUpdate} />
