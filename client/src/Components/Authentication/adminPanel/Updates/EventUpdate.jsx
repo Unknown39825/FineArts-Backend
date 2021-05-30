@@ -94,7 +94,9 @@ export default function EventUpdate(props) {
                 setCreated(true);
                 window.alert('Event Updated');
             } catch (err) {
-                console.log(err);
+
+                console.log(err.response.data);
+                window.alert("Unable to update ");
             }
         }
         else {

@@ -5,7 +5,7 @@ import './Footer.css'
 export default function Newsletter() {
 
     const [email, setEmail] = useState('');
-    console.log(email);
+    
     const submit = async(event) => {
         event.preventDefault();
 

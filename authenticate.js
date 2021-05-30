@@ -61,11 +61,19 @@ exports.isVerifiedUser = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then(
       (user) => {
-        if (user.isVerified) {
+        if(!user)
+        {
+          res
+            .status(400)
+            .json({ error: "Email Does not Exits" });
+
+        }
+
+        else if (user.isVerified) {
           next();
         } else {
           res
-            .status(403)
+            .status(400)
             .json({ msg: "Your account has not been verified !!" });
           return next(res);
         }

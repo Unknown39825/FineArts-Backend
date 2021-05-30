@@ -29,7 +29,8 @@ const EventTables = () => {
 
     }
     catch (error) {
-      window.alert("unable to delete");
+      console.log(error.response);
+      window.alert(`unable to delete ${error.response.data.error}`);
     }
 
   }

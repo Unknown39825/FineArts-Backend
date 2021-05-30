@@ -29,6 +29,7 @@ const WorkShopTable = () => {
 
     }
     catch (error) {
+      console.log(error.response.data);
       window.alert("unable to delete");
     }
 

@@ -33,19 +33,12 @@ export default function Signup()
              try{
             const res= await axios.post('/user/signup' , userpost);
             
-            if(res.status===409)
-            {
-                
-                window.alert("Email already Exist error");
-                return;
-            }
-
             window.alert(res.data.msg);
             setCreated(true);
         }catch(err){
             
-            console.log(err)
-            window.alert("Email Already Exists");
+            console.log(err.response)
+            window.alert(err.response.data.error);
             return ;
         }
         

@@ -47,8 +47,9 @@ export default function Signin() {
             
         } catch (err) {
 
-            console.log(err)
-            window.alert("Invalid Credentials");
+            console.log(err.response.data);
+            window.alert(err.response.data.error);
+            
             return;
         }
 
@@ -82,7 +83,8 @@ export default function Signin() {
                 setForgotpassword(true);
 
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
+                window.alert(error.response.data.error);
 
             }
         }

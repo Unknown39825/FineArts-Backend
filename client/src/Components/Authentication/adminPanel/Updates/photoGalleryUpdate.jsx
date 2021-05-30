@@ -96,7 +96,9 @@ export default function PhotoUpdate(props) {
                 setCreated(true);
                 window.alert('Photo Updated');
             } catch (err) {
-                console.log(err);
+                window.alert("Unable to update the Data");
+                console.log(err.response.data);
+                
             }
         }
         else {
@@ -112,7 +114,8 @@ export default function PhotoUpdate(props) {
                 
                 window.alert('photo created');
             } catch (err) {
-                console.log(err);
+                console.log(err.response.data);
+                window.alert("unble to update the data");
             }
         }
 

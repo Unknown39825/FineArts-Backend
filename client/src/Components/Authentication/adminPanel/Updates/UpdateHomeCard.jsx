@@ -95,7 +95,8 @@ export default function HomeCardUpdate(props) {
                 setCreated(true);
                 window.alert('Homecard Updated');
             } catch (err) {
-                console.log(err);
+                console.log(err.response.data);
+                window.alert("unble to update the data");
             }
         }
         else {
@@ -108,7 +109,8 @@ export default function HomeCardUpdate(props) {
                 setCreated(true);
                 window.alert('Homecard  created');
             } catch (err) {
-                console.log(err);
+                console.log(err.response.data);
+                window.alert("unble to update the data");
             }
         }
 

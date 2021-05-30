@@ -98,7 +98,8 @@ export default function UpdateWorkshop(props) {
                 setCreated(true);
                 window.alert('Workshop Updated');
             } catch (err) {
-                console.log(err);
+                console.log(err.response.data);
+                window.alert("unble to update the data");
             }
         }
         else {
@@ -111,7 +112,8 @@ export default function UpdateWorkshop(props) {
                 setCreated(true);
                 window.alert('Workshop  created');
             } catch (err) {
-                console.log(err);
+                console.log(err.response.data);
+                window.alert("unble to update the data");
             }
         }
 
