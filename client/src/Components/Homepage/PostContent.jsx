@@ -20,7 +20,7 @@ export default function PostContent({data}) {
                     <p>{data.desc}
 
                                 </p>
-                    <button className="btn post-btn" onClick="window.location='photogallery.html#gal';">show related&nbsp; <i className="fas fa-arrow-right"></i></button>
+                    <button className="btn post-btn" >show related&nbsp; <i className="fas fa-arrow-right"></i></button>
                 </div>
             </div>
             <hr/>

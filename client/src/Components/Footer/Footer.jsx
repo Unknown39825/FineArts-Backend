@@ -35,7 +35,7 @@ export default function Footer({ contributors}) {
                         <h2>Top Contributors</h2>
                         <div className="flex-row">
 
-                            {contributors.map((cont) => <h2 className="contributor">
+                            {contributors.map((cont) => <h2 key={cont._id} className="contributor">
                                 <span>{cont.user.firstname}</span>(
                                 <span>{cont.count}</span>)
 

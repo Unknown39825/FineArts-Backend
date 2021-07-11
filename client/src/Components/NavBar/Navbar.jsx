@@ -26,7 +26,7 @@ const Navbar = () => {
                 <div className="nav-menu flex-row">
                     <div className="nav-brand">
 
-                        <Link   to="/" className="text-grey bold">
+                        <Link to="/" className="text-grey bold">
                             <img className="logo" src={logo} width="50px" alt="" />FineArts <span className="red">
                                 NIT Kurukhetra</span>
                         </Link>
@@ -57,7 +57,7 @@ const Navbar = () => {
                             !isAuthenticated() && <NavLink to="/signup" activeClassName="active" className=" left" >signup</NavLink>
                        }
                        {
-                            isAuthenticated() && <Link onClick={logout} className=" left" >Signout</Link>
+                            isAuthenticated() && <Link onClick={logout} to="/" className=" left" >Signout</Link>
                        }
                     </div>
                     

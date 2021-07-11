@@ -213,7 +213,7 @@
     "fillColor": "#ff000026",
     "strokeColor": "black",
     "coords": [423, 327, 25],
-    "href": "javascript:void(0);"
+    "href": ""
   },
   {
     "title": "Ceiling",
@@ -222,7 +222,7 @@
     "fillColor": "#ff000026",
     "strokeColor": "black",
     "coords": [492, 283, 25],
-    "href": "javascript:void(0);"
+    "href": ""
   },
   {
     "title": "Ceiling",
@@ -348,7 +348,7 @@
     "fillColor": "#ff000026",
     "strokeColor": "black",
     "coords": [303, 179, 14],
-    "href": "javascript:void(0);"
+    "href": "/"
   },
   {
     "title": "Ceiling",
@@ -456,7 +456,7 @@
     "fillColor": "#ff000026",
     "strokeColor": "black",
     "coords": [584, 155, 16],
-    "href": "javascript:void(0);"
+    "href": ""
   },
   {
     "title": "Ceiling",
@@ -484,6 +484,6 @@
     "fillColor": "#ff000026",
     "strokeColor": "black",
     "coords": [685, 187, 12],
-    "href": "javascript:void(0);"
+    "href": ""
   }
 ]
