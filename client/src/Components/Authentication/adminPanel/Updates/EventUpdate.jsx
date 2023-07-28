@@ -60,8 +60,8 @@ export default function EventUpdate(props) {
         event.preventDefault();
         const data = new FormData();
         await data.append('file', Data);
-        data.append('upload_preset', 'unknown39825');
-        const res = await fetch("https://api.cloudinary.com/v1_1/dvhrzmkwd/image/upload",
+        data.append('upload_preset', 'ynw2jbip');
+        const res = await fetch("https://api.cloudinary.com/v1_1/dbgmmzvlh/image/upload",
             {
                 method: 'POST',
                 body: data
