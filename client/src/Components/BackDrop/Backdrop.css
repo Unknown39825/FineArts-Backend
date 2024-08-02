@@ -40,7 +40,7 @@ h3 {
 }
 
 .amazing {
-  z-index: 5;
+  z-index: 2;
   display: flex;
   width: 100%;
   position: absolute;
@@ -54,8 +54,22 @@ h3 {
   position: relative;
   bottom: 18vw;
   left: 0;
-  z-index: 5;
+  z-index: 0;
   width: 100%;
   backface-visibility: visible;
   pointer-events: none;
+}
+
+.wave-inverted {
+  display: none;
+}
+@media screen and (max-width: 750px) {
+  .wave-inverted{ 
+    display: block;
+  }
+}
+.groupOfAmazingPeople{
+  font-family: "Pacifico", cursive;
+  font-weight: 900;
+  font-style: normal;
 }
