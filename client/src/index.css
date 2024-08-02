@@ -28,6 +28,9 @@ html,body{
 a{
     text-decoration: none;
 }
+.body {
+    background: black !important;
+}
 .flex-row{
     display: flex;
     flex-direction: row;
@@ -53,18 +56,18 @@ a{
 input{
     text-transform: none;
 }
-h1
-{   font-family: var(--Lexend);
+h1{   
+    /* font-family: var(--Lexend); */
     font-size: 2rem;
 }
 h3
 {
-    font-family: var(--Abel);
+    /* font-family: var(--Abel); */
     font-size: 1.5rem;
 }
 h2
 {
-    font-family: var(--Lexend);
+    /* font-family: var(--Lexend); */
 
 }
 

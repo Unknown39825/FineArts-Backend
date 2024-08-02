@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ImageMapper from "react-img-mapper";
-import image from "../../images/Background-image.jpg";
+import image from "../../images/background-image.jpg";
 import areas from './areas.json';
 
 const Mapper = (props) => {

@@ -183,6 +183,9 @@ exports.forgotPassword = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
+  if(!req.body.email || !req.body.password){
+    return res.status(400).json({msg: "Either email or password field is empty"});
+  }
   const { user } = await User.authenticate()(req.body.email, req.body.password);
   if (!user) {
     return res.status(404).json({ error: "Invalid Credentials !!" });

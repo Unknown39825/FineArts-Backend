@@ -4,6 +4,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Card from './Card';
 
+
 export default function Carousel({cards}) {
 
     const responsive={
@@ -14,15 +15,14 @@ export default function Carousel({cards}) {
             items: 2
         },
         1000: {
-            items: 3
+            items: 3 
         }
-
     }
 
     return (
 
         <>
-            <OwlCarousel  className='art-post' items={3} loop margin={10} autoplay
+            <OwlCarousel  className='art-post' items={4} loop margin={10} /*autoplay*/
 
                 nav
                 dots

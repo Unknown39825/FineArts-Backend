@@ -9,6 +9,8 @@ import axios from 'axios'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 import Loader from '../Loader/Loader'
+import Allies from '../Allies/Allies';
+import Workshops from '../Workshops/Workshops';
 
 export default function Hompage() {
 
@@ -60,11 +62,25 @@ export default function Hompage() {
     }
 
     return (
-        <Base >
-        <Backdrop/>
-        <WhoAreWe/>
+      <Base>
+        <Backdrop />
+        <h1
+          style={{
+            width: '100%',
+            textAligin: 'center',
+            marginLeft: '100%',
+            marginTop: '7rem',
+          }}
+          className="temp-title"
+        >
+          Our Allies
+        </h1>
+
+        <WhoAreWe />
         <WhatWeDo cards={cards} />
+        <Workshops />
+        <Allies />
         <ThingWeOrganise events={events} workshop={workshop} />
-        </Base>
+      </Base>
     )
 }

@@ -14,15 +14,22 @@ import WorkshopUpdate from './Components/Authentication/adminPanel/Updates/Updat
 import AdminRoute from './Components/Authentication/auth/AdminRouters.js'
 import ProtectedRoute from './Components/Authentication/auth/ProtectedRoutes.js'
 import PhotoUpdate from './Components/Authentication/adminPanel/Updates/photoGalleryUpdate.jsx'
+import './App.css';
+import Sidebar from './Components/Sidebar/Sidebar.jsx';
+import Allies from './Components/Allies/Allies';
+import Workshops from './Components/Workshops/Workshops.jsx'
+import Sponsors from './Components/Sponsors/Sponsors.jsx'
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Sidebar />
       <Switch>
         <Route exact path="/art" component={ArtGallery} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/forgot" component={Forgot} />
+        <Route exact path='/ourAllies' component={Allies} />
         <ProtectedRoute exact path="/join" component={JoinUs} />
         <ProtectedRoute exact path="/artwork/:id" component={PhotoUpdate} />
         <AdminRoute exact path="/admin" component={admin} />
@@ -31,6 +38,9 @@ export default function App() {
         <AdminRoute exact path="/Workshop/:id" component={WorkshopUpdate} />
         <AdminRoute exact path="/artwork/:id" component={PhotoUpdate} />
 
+
+        <Route path='/workshops' component={Workshops} />
+        <Route path='/sponsors' component={Sponsors} />
         <Route path="/" exact={true} component={Hompage} />
         <Route path="*" component={Error} />
       </Switch>
