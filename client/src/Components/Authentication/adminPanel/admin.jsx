@@ -8,7 +8,7 @@ import ContributorTable from './Tables/ContributorsTable';
 import PhotoGalleryTable from './Tables/PhotoGalleryTable';
 import { isAuthenticated } from '../auth';
 
-const admin = () => {
+const Adminpanel = () => {
     return (
         
         <Base>
@@ -25,4 +25,4 @@ const admin = () => {
     );
 }
 
-export default admin;
+export default Adminpanel;
