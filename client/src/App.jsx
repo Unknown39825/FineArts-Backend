@@ -14,7 +14,7 @@ import AdminRoute from './Components/Authentication/auth/AdminRouters.jsx';
 import ProtectedRoute from './Components/Authentication/auth/ProtectedRoutes.jsx';
 import PhotoUpdate from './Components/Authentication/adminPanel/Updates/photoGalleryUpdate.jsx';
 import { ToastContainer } from 'react-toastify';
-import Adminpanel from './Components/Authentication/adminPanel/Admin.jsx';
+import Adminpanel from './Components/Authentication/adminPanel/AdminPanel.jsx';
 
 export default function App() {
   return (
