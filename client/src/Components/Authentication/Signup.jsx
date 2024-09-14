@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, {  useState } from 'react';
 import './style.css'
 
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import Base from '../Base/Base';
+import { toast } from 'react-toastify';
 
 // import config from "../config.json";
 export default function Signup() 
 {
-    
     const [userpost, setUser] = useState({
         firstname:'',
         lastname:'',
@@ -29,36 +29,29 @@ export default function Signup()
     }
 
     const postEvent =async() => {
-
              try{
             const res= await axios.post('/user/signup' , userpost);
             
-            window.alert(res.data.msg);
+            toast(res.data.msg);
             setCreated(true);
         }catch(err){
-            
             console.log(err.response)
-            window.alert(err.response.data.error);
+            toast(err.response.data.error);
             return ;
         }
-        
     }
 
     const onSubmit =(e) => {
         e.preventDefault();
-        if(userpost.email.trim() !== "" && userpost.password.trim!=="" )
-        {
+        if(userpost.email.trim() !== "" && userpost.password.trim!=="" ) {
             postEvent();
-        }
-        else
-        {
-            window.alert("User details are  empty");
+        } else {
+            toast("User details are  empty");
         }
     }
 
-    if(created)
-    {
-        return <Redirect to="/"></Redirect>
+    if(created) {
+        return <Navigate to="/"></Navigate>
     }
 
     return (

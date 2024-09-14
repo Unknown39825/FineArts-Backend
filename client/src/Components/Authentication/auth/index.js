@@ -1,15 +1,14 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const authenticate = (data, next) => {
   if (typeof window !== "undefined") {
-    
     localStorage.setItem("jwt", JSON.stringify(data));
     return;
   }
 };
 
 export const signout = async () => {
-
     const { token } = isAuthenticated();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -21,19 +20,15 @@ export const signout = async () => {
         const res = await axios.get(`/user/logout`, config);
         localStorage.removeItem("jwt");
         if(res)
-        window.alert(`${res.data.firstname} logout success`);
+        toast(`${res.data.firstname} logout success`);
         window.location="/";
-
     } catch (error) {
-
       console.log(error);
-      window.alert("session expired login again");
+      toast("session expired login again");
       localStorage.removeItem("jwt");
       window.location.reload();
       return;
-      
     }
-
   }
 };
 

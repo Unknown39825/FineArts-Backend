@@ -3,9 +3,9 @@ import Base from '../Base/Base'
 import './style.css';
 import img from '../../images/logo.png';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function JoinUs() {
-
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
@@ -37,14 +37,12 @@ export default function JoinUs() {
             })
         )
 
-        else
-        {
+        else {
             const prevstate= formData;
             let {interestedin}= prevstate;
             
             interestedin[value]=interestedin[value]^true;
             setFormData({...formData,interestedin});
-
         }
     }
 
@@ -62,24 +60,18 @@ export default function JoinUs() {
             formData.why===""
         )
         {
-            return window.alert('please fill the details');
-            
+            return toast('please fill the details');
         }
 
         try {
             const res = await axios.post('/api/form', formData);
 
-            if(res.data)
-            {
-                
+            if(res.data) {
                 window.location="/"
             }
-            
         } catch (error) {
             console.log(error);
-            
         }
-
     }
 
     return (

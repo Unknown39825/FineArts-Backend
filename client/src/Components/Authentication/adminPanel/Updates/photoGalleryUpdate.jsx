@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Base from '../../../Base/Base';
 import { isAuthenticated } from '../../auth';
 import '../../style.css'
@@ -10,7 +11,6 @@ export default function PhotoUpdate(props) {
     
     const { token } = isAuthenticated();
     const config = {
-
         headers: { Authorization: `Bearer ${token}` }
     };
 
@@ -25,12 +25,9 @@ export default function PhotoUpdate(props) {
     const [Data, setData] = useState(undefined);
 
     useEffect(() => {
-
         const dataFetch = async () => {
-
             const { token } = isAuthenticated();
             const config = {
-
                 headers: { Authorization: `Bearer ${token}` }
             };
 
@@ -41,14 +38,13 @@ export default function PhotoUpdate(props) {
                 if (res.data) {
                     setEvent(res.data);
                 }
-            }
-            catch (error) {
+            } catch (error) {
                 console.log(error);
             }
         }
+
         if (id !== "new")
             dataFetch();
-
     }, [id]);
 
     const uploadImage = async event => {
@@ -84,41 +80,33 @@ export default function PhotoUpdate(props) {
     console.log(EventPost);
 
     const postEvent = async () => {
-
         if (id !== "new") {
-
             try {
-
                 const res = await axios.put(`/api/artwork/${id}`, EventPost, config);
                 if(res.msg)
-                window.alert(res.msg);
+                toast(res.msg);
                 console.log(res);
                 setCreated(true);
-                window.alert('Photo Updated');
+                toast('Photo Updated');
             } catch (err) {
-                window.alert("Unable to update the Data");
+                toast("Unable to update the Data");
                 console.log(err.response.data);
-                
             }
-        }
-        else {
-            
+        } else {
             try {
-                
                 const res = await axios.post(`/api/artwork`, EventPost, config);
                 if(res.msg)
-                window.alert(res.msg);
+                toast(res.msg);
                 setCreated(true);
                 if(res.msg)
-                window.alert(res.msg);
+                toast(res.msg);
                 
-                window.alert('photo created');
+                toast('photo created');
             } catch (err) {
                 console.log(err.response.data);
-                window.alert("unble to update the data");
+                toast("unble to update the data");
             }
         }
-
     }
 
     const onSubmit = (e) => {
@@ -126,12 +114,12 @@ export default function PhotoUpdate(props) {
         if (EventPost.img.trim() !== "" && EventPost.artist.trim() !== "" && EventPost.category.trim() !== "") {
             postEvent();
         } else {
-            window.alert("Event details are  empty");
+            toast("Event details are  empty");
         }
     }
 
     if (created) {
-        return <Redirect to="/admin"></Redirect>
+        return <Navigate to="/admin"></Navigate>
     }
 
     return (

@@ -4,14 +4,10 @@ import image from "../../images/Background-image.jpg";
 import areas from './areas.json';
 
 const Mapper = (props) => {
-
   function useWindowSize() {
-   
     const [windowSize, setWindowSize] = useState(undefined);
     useEffect(() => {
-      
       function handleResize() {
-        
         setWindowSize(window.innerWidth);
       }
       

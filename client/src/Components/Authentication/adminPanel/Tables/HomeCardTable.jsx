@@ -3,14 +3,13 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import { isAuthenticated } from "../../auth";
 import '../../style.css'
+import { toast } from "react-toastify";
 
 const HomeCardTable = () => {
-
   const [Event, setEvent] = useState([]);
   const [created, setCreated] = useState(false);
   const { token } = isAuthenticated();
   const config = {
-
     headers: { Authorization: `Bearer ${token}` }
   };
 
@@ -21,18 +20,14 @@ const HomeCardTable = () => {
     try {
       const res = await axios.delete(`/api/homecard/${id}`, config);
       if (res.data) {
-        window.alert("Deleted Successfully");
+        toast("Deleted Successfully");
         
         await setCreated(true);
-
       }
-
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error.response.data);
-      window.alert("unable to delete");
+      toast("unable to delete");
     }
-
   }
 
   useEffect(() => {
@@ -42,15 +37,13 @@ const HomeCardTable = () => {
 
         if (res.data) {
           setEvent(res.data);
-
         }
-      }
-      catch (error) {
+      } catch (error) {
         console.log(error);
       }
     }
-    dataFetch();
 
+    dataFetch();
   }, []);
 
   if (created) {
@@ -88,9 +81,7 @@ const HomeCardTable = () => {
                 { isAuthenticated() && <td><button onClick={DeleteEvent} className="btn" value={event._id}> Delete </button> </td>
                 }
               </tr>)
-
             })
-
             }
           </tbody>
         </table>

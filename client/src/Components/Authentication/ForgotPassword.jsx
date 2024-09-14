@@ -2,13 +2,13 @@
 import axios from 'axios';
 import React, {  useState } from 'react'
 import './style.css'
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import Base from '../Base/Base';
+import { toast } from 'react-toastify';
 // import {BASE} from "../config.json";
 export default function Signin() 
 {
-
     const [userpost, setUser] = useState({
         email:'',
         password:'',
@@ -27,76 +27,59 @@ export default function Signin()
     }
 
     const changePassword =async() => {
-
-            if(!userpost.otp || userpost.otp.trim()==="")
-            {
-                window.alert("add a valid otp");
+            if(!userpost.otp || userpost.otp.trim()==="") {
+                toast("add a valid otp");
                 return;
             }
 
              try{
             const res= await axios.put(`/user/otp/verify`,userpost);
 
-            if(res.data.error)
-            {
-                
-                window.alert(res.data.error);
+            if(res.data.error) {
+                toast(res.data.error);
                 return;
             }
-            window.alert(res.data.msg);
+
+            toast(res.data.msg);
             
             setCreated(true);
         }catch(err){
-            
             console.log(err)
-            window.alert("Invalid Credentials");
+            toast("Invalid Credentials");
             return ;
         }
-        
     }
     
     const onSubmit =(e) => {
         e.preventDefault();
-        if(userpost.email.trim() !== "" && userpost.password.trim!=="" )
-        {
-            
+        if(userpost.email.trim() !== "" && userpost.password.trim!=="" ) {
             changePassword();
-        }
-        else
-        {
-            window.alert("User details are  empty");
+        } else {
+            toast("User details are  empty");
         }
     }
 
     const ResetPassword = async (e) => {
-        
-        if(userpost.email.trim() !== "")
-        {
+        if(userpost.email.trim() !== "") {
             try {
                 const res= await axios.put(`/user/forgot`,userpost);
 
-                if(res.data.error)
-                {
-                    window.alert(res.data.error);
+                if(res.data.error) {
+                    toast(res.data.error);
                     return;
-                    
                 }
-                window.alert(res.data.msg);
-                
+
+                toast(res.data.msg);
             } catch (error) {
                 console.log(error);
-                
             }
-        }
-        else
-        {
-            window.alert("User details are  empty");
+        } else {
+            toast("User details are  empty");
         }
     }
 
-    if(created)
-    {
-        return <Redirect to="/"></Redirect>
+    if(created) {
+        return <Navigate to="/"></Navigate>
     }
 
     return (

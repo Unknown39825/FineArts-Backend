@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Base from '../../../Base/Base';
 import { isAuthenticated } from '../../auth';
 import '../../style.css'
@@ -10,7 +11,6 @@ export default function EventUpdate(props) {
     
     const { token } = isAuthenticated();
     const config = {
-
         headers: { Authorization: `Bearer ${token}` }
     };
 
@@ -25,12 +25,9 @@ export default function EventUpdate(props) {
     const [Data, setData] = useState(undefined);
 
     useEffect(() => {
-
         const dataFetch = async () => {
-
             const { token } = isAuthenticated();
             const config = {
-
                 headers: { Authorization: `Bearer ${token}` }
             };
 
@@ -41,14 +38,13 @@ export default function EventUpdate(props) {
                 if (res.data) {
                     setEvent(res.data);
                 }
-            }
-            catch (error) {
+            } catch (error) {
                 console.log(error);
             }
         }
+
         if (id !== "new")
             dataFetch();
-
     }, [id]);
 
     const uploadImage = async event => {
@@ -82,40 +78,32 @@ export default function EventUpdate(props) {
     }
 
     const postEvent = async () => {
-
         if (id !== "new") {
-
             try {
-
                 const res = await axios.put(`/api/event/${id}`, EventPost, config);
                 if(res.msg)
-                window.alert(res.msg);
+                toast(res.msg);
                 console.log(res);
                 setCreated(true);
-                window.alert('Event Updated');
+                toast('Event Updated');
             } catch (err) {
-
                 console.log(err.response.data);
-                window.alert("Unable to update ");
+                toast("Unable to update ");
             }
-        }
-        else {
-            
+        } else {
             try {
-                
                 const res = await axios.post(`/api/event`, EventPost, config);
                 if(res.msg)
-                window.alert(res.msg);
+                toast(res.msg);
                 setCreated(true);
                 if(res.msg)
-                window.alert(res.msg);
+                toast(res.msg);
                 
-                window.alert('event  created');
+                toast('event  created');
             } catch (err) {
                 console.log(err);
             }
         }
-
     }
 
     const onSubmit = (e) => {
@@ -123,12 +111,12 @@ export default function EventUpdate(props) {
         if (EventPost.title.trim() !== "" && EventPost.link.trim() !== "" && EventPost.img.trim() !== "") {
             postEvent();
         } else {
-            window.alert("Event details are  empty");
+            toast("Event details are  empty");
         }
     }
 
     if (created) {
-        return <Redirect to="/admin"></Redirect>
+        return <Navigate to="/admin"></Navigate>
     }
 
     return (

@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import './style.css'
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Base from '../Base/Base';
 
 import { authenticate } from './auth';
+import { toast } from 'react-toastify';
 
 export default function Signin() {
-
     const [userpost, setUser] = useState({
         email: '',
         password: '',
@@ -27,16 +27,15 @@ export default function Signin() {
     }
 
     const postEvent = async () => {
-
         try {
             const res = await axios.post(`/user/login`, userpost);
 
             if (res.data.error) {
-
-                window.alert(res.data.error);
+                toast(res.data.error);
                 return;
             }
-            window.alert(res.data.msg);
+
+            toast(res.data.msg);
 
             authenticate({
                 token:
@@ -44,26 +43,20 @@ export default function Signin() {
                 admin: res.data.admin
             });
             setCreated(true);
-            
         } catch (err) {
-
             console.log(err.response.data);
-            window.alert(err.response.data.error);
+            toast(err.response.data.error);
             
             return;
         }
-
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
         if (userpost.email.trim() !== "" && userpost.password.trim !== "") {
-
             postEvent();
-
-        }
-        else {
-            window.alert("User details are  empty");
+        } else {
+            toast("User details are  empty");
         }
     }
 
@@ -75,30 +68,27 @@ export default function Signin() {
                 const res = await axios.put(`/user/forgot`, userpost);
 
                 if (res.data.error) {
-                    window.alert(res.data.error);
+                    toast(res.data.error);
                     return;
-
                 }
-                window.alert(res.data.msg);
-                setForgotpassword(true);
 
+                toast(res.data.msg);
+                setForgotpassword(true);
             } catch (error) {
                 console.log(error.response);
-                window.alert(error.response.data.error);
-
+                toast(error.response.data.error);
             }
-        }
-        else {
-            window.alert("User details are  empty");
+        } else {
+            toast("User details are  empty");
         }
     }
 
     if (created) {
-        return <Redirect to="/"></Redirect>
+        return <Navigate to="/"></Navigate>
     }
 
     if (forgotpassword) {
-        return <Redirect to="/forgot"></Redirect>
+        return <Navigate to="/forgot"></Navigate>
     }
 
     return (

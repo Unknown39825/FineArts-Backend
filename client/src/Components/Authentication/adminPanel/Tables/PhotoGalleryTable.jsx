@@ -5,12 +5,10 @@ import { isAuthenticated } from "../../auth";
 import '../../style.css'
 
 const PhotoGalleryTable = () => {
-
   const [Event, setEvent] = useState([]);
   const [created, setCreated] = useState(false);
   const { token } = isAuthenticated();
   const config = {
-
     headers: { Authorization: `Bearer ${token}` }
   };
 
@@ -21,17 +19,13 @@ const PhotoGalleryTable = () => {
     try {
       const res = await axios.delete(`/api/artwork/${id}`, config);
       if (res.data) {
-        window.alert("Deleted Successfully");
+        toast("Deleted Successfully");
         
         await setCreated(true);
-
       }
-
+    } catch (error) {
+      toast("unable to delete");
     }
-    catch (error) {
-      window.alert("unable to delete");
-    }
-
   }
 
   useEffect(() => {
@@ -41,15 +35,13 @@ const PhotoGalleryTable = () => {
 
         if (res.data) {
           setEvent(res.data);
-
         }
-      }
-      catch (error) {
+      } catch (error) {
         console.log(error);
       }
     }
-    dataFetch();
 
+    dataFetch();
   }, []);
 
   if (created) {
@@ -87,9 +79,7 @@ const PhotoGalleryTable = () => {
                 { isAuthenticated() && <td><button onClick={DeleteEvent} className="btn" value={event._id}> Delete </button> </td>
                 }
               </tr>)
-
             })
-
             }
           </tbody>
         </table>

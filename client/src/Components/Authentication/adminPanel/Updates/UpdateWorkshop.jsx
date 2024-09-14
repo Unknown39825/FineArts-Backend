@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Base from '../../../Base/Base';
 import { isAuthenticated } from '../../auth';
 import '../../style.css'
@@ -10,7 +11,6 @@ export default function UpdateWorkshop(props) {
     
     const { token } = isAuthenticated();
     const config = {
-
         headers: { Authorization: `Bearer ${token}` }
     };
 
@@ -30,12 +30,9 @@ export default function UpdateWorkshop(props) {
     const [Data, setData] = useState(undefined);
 
     useEffect(() => {
-
         const dataFetch = async () => {
-
             const { token } = isAuthenticated();
             const config = {
-
                 headers: { Authorization: `Bearer ${token}` }
             };
 
@@ -46,14 +43,13 @@ export default function UpdateWorkshop(props) {
                 if (res.data) {
                     setEvent(res.data);
                 }
-            }
-            catch (error) {
+            } catch (error) {
                 console.log(error);
             }
         }
+
         if (id !== "new")
             dataFetch();
-
     }, [id]);
 
     const uploadImage = async event => {
@@ -87,36 +83,29 @@ export default function UpdateWorkshop(props) {
     }
 
     const postEvent = async () => {
-
         if (id !== "new") {
-
             try {
-
                 const res = await axios.put(`/api/workshop/${id}`, EventPost, config);
                 if(res.msg)
-                window.alert(res.msg);
+                toast(res.msg);
                 setCreated(true);
-                window.alert('Workshop Updated');
+                toast('Workshop Updated');
             } catch (err) {
                 console.log(err.response.data);
-                window.alert("unble to update the data");
+                toast("unble to update the data");
             }
-        }
-        else {
-            
+        } else {
             try {
-                
                 const res = await axios.post(`/api/workshop`, EventPost, config);
                 if(res.msg)
-                window.alert(res.msg);
+                toast(res.msg);
                 setCreated(true);
-                window.alert('Workshop  created');
+                toast('Workshop  created');
             } catch (err) {
                 console.log(err.response.data);
-                window.alert("unble to update the data");
+                toast("unble to update the data");
             }
         }
-
     }
 
     const onSubmit = (e) => {
@@ -124,12 +113,12 @@ export default function UpdateWorkshop(props) {
         if (EventPost.title.trim() !== "" && EventPost.desc.trim() !== "" && EventPost.imglink.trim() !== "" && EventPost.author.trim() !== "") {
             postEvent();
         } else {
-            window.alert("Workshop details are  empty");
+            toast("Workshop details are  empty");
         }
     }
 
     if (created) {
-        return <Redirect to="/admin"></Redirect>
+        return <Navigate to="/admin"></Navigate>
     }
 
     return (

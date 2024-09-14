@@ -6,6 +6,7 @@ import WorkShopTable from './Tables/WorkshopTable';
 import UserTable from './Tables/UserTable';
 import ContributorTable from './Tables/ContributorsTable';
 import PhotoGalleryTable from './Tables/PhotoGalleryTable';
+import { isAuthenticated } from '../auth';
 
 const admin = () => {
     return (
@@ -17,12 +18,8 @@ const admin = () => {
             <PhotoGalleryTable/>
             <ContributorTable/>
             <UserTable/>
-            
-            {/* 
-            <ContributorsTable/>
-            <ProjectCardsTable/>
-            <TutorialsTable/>
-            {isAuthenticated()&&isAuthenticated().admin&&<UserTable/>} */}
+        
+            {isAuthenticated()&&isAuthenticated().admin&&<UserTable/>}
         
         </Base>
     );
