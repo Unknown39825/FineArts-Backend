@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Base from '../../../Base/Base';
 import { isAuthenticated } from '../../auth';
 import '../../style.css'
 
 export default function UpdateWorkshop(props) {
-    let id = props.match.params.id;
+    const {id} = useParams();
+    console.log(id)
     
     const { token } = isAuthenticated();
     const config = {
