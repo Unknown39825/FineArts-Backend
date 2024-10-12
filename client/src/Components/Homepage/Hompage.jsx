@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Backdrop from "../BackDrop";
 import Base from "../Base/Base";
 import WhoAreWe from "./WhoAreWe";

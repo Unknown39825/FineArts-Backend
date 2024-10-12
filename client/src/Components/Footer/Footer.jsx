@@ -1,10 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 import "./Footer.css";
 import Newsletter from "./Newsletter";
 
-export default function Footer({ contributors }) {
+export default function Footer({ contributors = [] }) {
   return (
     <>
       <footer className="footer">

@@ -1,127 +1,163 @@
-import axios from 'axios';
-import React, { useState } from 'react'
-import './style.css'
-import { Navigate } from 'react-router-dom';
-import Base from '../Base/Base';
+import axios from "axios";
+import { useState } from "react";
+import "./style.css";
+import { Navigate } from "react-router-dom";
+import Base from "../Base/Base";
 
-import { authenticate } from './auth';
-import { toast } from 'react-toastify';
+import { authenticate } from "./auth";
+import { toast } from "react-toastify";
 
 export default function Signin() {
-    const [userpost, setUser] = useState({
-        email: '',
-        password: '',
+  const [userpost, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [forgotpassword, setForgotpassword] = useState(false);
+
+  const [created, setCreated] = useState(false);
+
+  // const [url, setUrl] = useState("helo");
+
+  const handleChange = (e) => {
+    setUser({
+      ...userpost,
+      [e.target.name]: e.target.value,
     });
+  };
 
-    const [forgotpassword, setForgotpassword] = useState(false);
+  const postEvent = async () => {
+    try {
+      const res = await axios.post(`/user/login`, userpost);
 
-    const [created, setCreated] = useState(false);
+      if (res.data.error) {
+        toast(res.data.error);
+        return;
+      }
 
-    // const [url, setUrl] = useState("helo");
+      toast(res.data.msg);
 
-    const handleChange = (e) => {
-        setUser({
-            ...userpost,
-            [e.target.name]: e.target.value
-        })
+      authenticate({
+        token: res.data.token,
+        admin: res.data.admin,
+      });
+      setCreated(true);
+    } catch (err) {
+      console.log(err.response.data);
+      toast(err.response.data.error);
+
+      return;
     }
+  };
 
-    const postEvent = async () => {
-        try {
-            const res = await axios.post(`/user/login`, userpost);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (userpost.email.trim() !== "" && userpost.password.trim !== "") {
+      postEvent();
+    } else {
+      toast("User details are  empty");
+    }
+  };
 
-            if (res.data.error) {
-                toast(res.data.error);
-                return;
-            }
+  const ResetPassword = async (e) => {
+    e.preventDefault();
 
-            toast(res.data.msg);
+    if (userpost.email.trim() !== "") {
+      try {
+        const res = await axios.put(`/user/forgot`, userpost);
 
-            authenticate({
-                token:
-                    res.data.token,
-                admin: res.data.admin
-            });
-            setCreated(true);
-        } catch (err) {
-            console.log(err.response.data);
-            toast(err.response.data.error);
-            
-            return;
+        if (res.data.error) {
+          toast(res.data.error);
+          return;
         }
+
+        toast(res.data.msg);
+        setForgotpassword(true);
+      } catch (error) {
+        console.log(error.response);
+        toast(error.response.data.error);
+      }
+    } else {
+      toast("User details are  empty");
     }
+  };
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        if (userpost.email.trim() !== "" && userpost.password.trim !== "") {
-            postEvent();
-        } else {
-            toast("User details are  empty");
-        }
-    }
+  if (created) {
+    return <Navigate to="/"></Navigate>;
+  }
 
-    const ResetPassword = async (e) => {
-        e.preventDefault();
-        
-        if (userpost.email.trim() !== "") {
-            try {
-                const res = await axios.put(`/user/forgot`, userpost);
+  if (forgotpassword) {
+    return <Navigate to="/forgot"></Navigate>;
+  }
 
-                if (res.data.error) {
-                    toast(res.data.error);
-                    return;
-                }
+  return (
+    <Base>
+      <div className="cont">
+        <div className="main">
+          <h1 className="bg-dark m-2 text-white p-2 rounded">Login User</h1>
+          <div className="form">
+            <form>
+              <div>
+                <label>
+                  <b>email </b>
+                </label>
+                <input
+                  className="input"
+                  type="email"
+                  name="email"
+                  value={userpost.email}
+                  onChange={handleChange}
+                  placeholder=""
+                />
+              </div>
 
-                toast(res.data.msg);
-                setForgotpassword(true);
-            } catch (error) {
-                console.log(error.response);
-                toast(error.response.data.error);
-            }
-        } else {
-            toast("User details are  empty");
-        }
-    }
+              <div>
+                <label>
+                  <b> {forgotpassword && "new"} password </b>
+                </label>
+                <input
+                  className="input"
+                  type="password"
+                  name="password"
+                  value={userpost.password}
+                  onChange={handleChange}
+                  placeholder=""
+                />
+              </div>
 
-    if (created) {
-        return <Navigate to="/"></Navigate>
-    }
-
-    if (forgotpassword) {
-        return <Navigate to="/forgot"></Navigate>
-    }
-
-    return (
-        <Base>
-            <div className="cont">
-                <div className="main">
-                    <h1 className="bg-dark m-2 text-white p-2 rounded">Login User</h1>
-                    <div className="form">
-                        <form >
-
-                            <div controlId="">
-                                <label><b>email </b></label>
-                                <input className="input" type="email" name="email" value={userpost.email} onChange={handleChange} placeholder="" />
-                            </div>
-
-                            <div controlId="">
-                                <label><b> {forgotpassword && "new"}  password </b></label>
-                                <input className="input" type="password" name="password" value={userpost.password} onChange={handleChange} placeholder="" />
-                            </div>
-
-                            {forgotpassword && <div controlId="">
-                                <label><b>OTP</b></label>
-                                <input className="input" type="password" name="otp" value={userpost.otp} onChange={handleChange} placeholder="" />
-                            </div>}
-
-                            <button variant="primary" className="btn" onClick={onSubmit}>Submit</button>
-
-                            {!forgotpassword && <button variant="primary" className="btn" onClick={ResetPassword}>ForgotPassword</button>}
-
-                        </form>
-                    </div>
+              {forgotpassword && (
+                <div>
+                  <label>
+                    <b>OTP</b>
+                  </label>
+                  <input
+                    className="input"
+                    type="password"
+                    name="otp"
+                    value={userpost.otp}
+                    onChange={handleChange}
+                    placeholder=""
+                  />
                 </div>
-            </div>
-        </Base>
-    )
+              )}
+
+              <button variant="primary" className="btn" onClick={onSubmit}>
+                Submit
+              </button>
+
+              {!forgotpassword && (
+                <button
+                  variant="primary"
+                  className="btn"
+                  onClick={ResetPassword}
+                >
+                  ForgotPassword
+                </button>
+              )}
+            </form>
+          </div>
+        </div>
+      </div>
+    </Base>
+  );
 }

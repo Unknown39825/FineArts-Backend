@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Base from "../Base/Base";
 import "./photo.css";
 import PhotoCard from "./PhotoCard";
