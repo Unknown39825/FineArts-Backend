@@ -1,65 +1,62 @@
-import Aos from 'aos';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { toast } from 'react-toastify';
-import { isAuthenticated } from '../Authentication/auth';
-import Footer from '../Footer/Footer'
+import Aos from "aos";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { isAuthenticated } from "../Authentication/auth";
+import Footer from "../Footer/Footer";
 
-import Navbar from '../NavBar/Navbar'
+import Navbar from "../NavBar/Navbar";
 
 export default function Base({
-    title="title",
-    description="my description",
-    className="",
-    children
+  title = "title",
+  description = "my description",
+  className = "",
+  children,
 }) {
-    const [conributor, setConributor] = useState([]);
+  const [conributor, setConributor] = useState([]);
 
-    const FetchData = async () => {
-        try {
-            const res = await axios.get('/api/contributor');
+  const FetchData = async () => {
+    try {
+      const res = await axios.get("/api/contributor");
 
-            if (res.data) {
-                setConributor(res.data);
-            }
-        } catch (error) {
-            console.log(error);
-        }
+      if (res.data) {
+        setConributor(res.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const validateUser = async()=>{
-        const { token } = isAuthenticated();
+  const validateUser = async () => {
+    const { token } = isAuthenticated();
 
-        if(!token)
-        return;
+    if (!token) return;
 
-        try {
-            const config = {
-                headers: { Authorization: `Bearer ${token}` }
-            };
-            const res = await axios.get('/user/auth', config);
-        } catch (error) {
-            localStorage.removeItem("jwt");
-            toast("Session Expire Login Again");
-        }
+    try {
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+      const res = await axios.get("/user/auth", config);
+    } catch (error) {
+      localStorage.removeItem("jwt");
+      toast("Session Expire Login Again");
     }
-   
-    useEffect(() => {
-        FetchData();
-        validateUser();
-        
-        Aos.init();
-    }, []);
+  };
 
-    return (
-        <div >
-        <Navbar key="navbar"/>
+  useEffect(() => {
+    FetchData();
+    validateUser();
 
-            <div className="children" >
-                {children}
-            </div>
-            
-        <Footer key="footer" contributors ={conributor} />
-        </div>
-    )
+    Aos.init({ duration: 1000 });
+  }, []);
+
+  return (
+    <div>
+      <Navbar key="navbar" />
+
+      <div className="children">{children}</div>
+
+      <Footer key="footer" contributors={conributor} />
+    </div>
+  );
 }

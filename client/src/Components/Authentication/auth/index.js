@@ -9,19 +9,20 @@ export const authenticate = (data, next) => {
 };
 
 export const signout = async () => {
-    const { token } = isAuthenticated();
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-  
+  const data = isAuthenticated();
+  const token = data.token;
+  const config = {
+    headers: { Authorization: "Bearer " + token },
+  };
+
   if (typeof window !== "undefined") {
     // console.log(localStorage.getItem("jwt"));
     try {
-        const res = await axios.get(`/user/logout`, config);
-        localStorage.removeItem("jwt");
-        if(res)
+      const res = await axios.get(`/user/logout`, config);
+      localStorage.removeItem("jwt");
+      if (res)
         toast(`${res.data.firstname} logout success`);
-        window.location="/";
+      window.location = "/";
     } catch (error) {
       console.log(error);
       toast("session expired login again");

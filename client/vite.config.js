@@ -7,11 +7,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://fineartsnitkkr.onrender.com',
         changeOrigin: true,
       },
       '/user': {
-        target: 'http://localhost:8000',
+        target: 'https://fineartsnitkkr.onrender.com',
         changeOrigin: true,
       }
     }
