@@ -47,17 +47,13 @@ exports.createContributor =async (userId,cnt)=>{
 };
 
 // fetch all contributors
-exports.getContributors = (req,res)=>{
-
-    Contributor.find().populate("user","firstname").exec((err,data)=>{
-        if(err)
-        {
-            return res.status(401).json({error:err});
-
-        }
+exports.getContributors = async (req, res) => {
+    try {
+        const data = await Contributor.find().populate("user", "firstname").exec();
         return res.status(200).json(data);
-    })
-
+    } catch (err) {
+        return res.status(401).json({ error: err });
+    }
 };
 
 // delete contributor
