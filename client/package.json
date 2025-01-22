@@ -17,7 +17,7 @@
     "react-owl-carousel": "^2.3.3",
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.5",
-     "vite": "^5.4.8"
+     "vite": "^5.4.14"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -29,6 +29,6 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
-    "vite": "^5.4.8"
+    "vite": "^5.4.14"
   }
 }
