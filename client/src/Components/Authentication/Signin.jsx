@@ -145,6 +145,13 @@ export default function Signin() {
                 Submit
               </button>
 
+              <button variant="primary" className="btn" onClick={(e)=>{
+                e.preventDefault();
+                window.location = `https://auth.unknown39825.live?redirect_url=https://finearts.unknown39825.live`
+              }}>
+                Login SSO
+              </button>
+
               {!forgotpassword && (
                 <button
                   variant="primary"

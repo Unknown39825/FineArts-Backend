@@ -12,6 +12,7 @@ export const signout = async () => {
   const data = isAuthenticated();
   const token = data.token;
   const config = {
+    withCredentials: true,
     headers: { Authorization: "Bearer " + token },
   };
 
@@ -22,12 +23,14 @@ export const signout = async () => {
       localStorage.removeItem("jwt");
       if (res)
         toast(`${res.data.firstname} logout success`);
-      window.location = "/";
+      // window.location = "/";
+      window.location = `https://auth.unknown39825.live/logout?redirect_url=${window.location.href}`;
     } catch (error) {
       console.log(error);
       toast("session expired login again");
+      window.location = `https://auth.unknown39825.live/logout?redirect_url=${window.location.href}`
       localStorage.removeItem("jwt");
-      window.location.reload();
+      // set the cookie on domain
       return;
     }
   }

@@ -30,13 +30,18 @@ export default function Base({
   const validateUser = async () => {
     const { token } = isAuthenticated();
 
-    if (!token) return;
+    // if (!token) return;
 
     try {
       const config = {
         headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true,
       };
       const res = await axios.get("/user/auth", config);
+      console.log(res)
+      if(res.data.token){
+        localStorage.setItem("jwt", JSON.stringify({ token: res.data.token }))
+      }
     } catch (error) {
       localStorage.removeItem("jwt");
       toast("Session Expire Login Again");
